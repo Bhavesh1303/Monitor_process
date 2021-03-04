@@ -38,4 +38,3 @@ if __name__ == '__main__':
         print(df)
         df.to_csv(r'result.txt', header="ProcessID\t\t\tProcess Name\t\t\tTime\t\t\tStatus(Start/Stop)", index=None, sep='\t', mode='w+')
         time.sleep(1)
-    

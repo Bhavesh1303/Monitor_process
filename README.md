@@ -7,4 +7,4 @@ This repo has the code to monitor the process status in the windows machine
 
 #### [Monitor Process in C++](https://github.com/Bhavesh1303/Monitor_process/tree/main/C%2B%2B%20Solution/MonitorProcess) - [Code](https://github.com/Bhavesh1303/Monitor_process/blob/main/C%2B%2B%20Solution/MonitorProcess/MonitorProcess.cpp)
 
-#### [Monitor Process in Bash](https://github.com/Bhavesh1303/Monitor_process/blob/main/README.md) - Trying now
+#### [Monitor Process in Bash](https://github.com/Bhavesh1303/Monitor_process/blob/main/Bash%20Solution/README.md) - [Code](https://github.com/Bhavesh1303/Monitor_process/blob/main/Bash%20Solution/README.md)

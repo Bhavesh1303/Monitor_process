@@ -7,7 +7,8 @@
     ```
     python3 monitor_process.py
     ```
-   
+#### [Code](https://github.com/Bhavesh1303/Monitor_process/blob/main/Python%20Solution/Python%20Solution/Python_Solution.py)
+
 ## Examples:
 ```
 >python monitor_process.py

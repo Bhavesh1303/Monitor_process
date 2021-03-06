@@ -51,15 +51,17 @@ void PrintProcessNameAndID(DWORD processID)
         if (GetProcessTimes(hProcess, &createTime, &exitTime, &kernelTime, &userTime) != -1)
         {
             if (FileTimeToSystemTime(&createTime, &AppStartTime) != -1) {
-                if (GetExitCodeProcess(hProcess, &exitCode) == 0) {
-                    // Print the process name and identifier.
-                    _tprintf(TEXT("%s  %u  %02d:%02d:%02d:%03d  STOP\n"), szProcessName, processID, AppStartTime.wHour, AppStartTime.wMinute, AppStartTime.wSecond, AppStartTime.wMilliseconds);//, AppStatus
-                    filestream << strtmp << "\t" << processID << "\t" << AppStartTime.wHour << ":" << AppStartTime.wMinute << ":" << AppStartTime.wSecond << ":" << AppStartTime.wMilliseconds << "\t" << " STOP " << "\n";
-                }
-                else {
-                    // Print the process name and identifier.
-                    _tprintf(TEXT("%s  %u  %02d:%02d:%02d:%03d  START\n"), szProcessName, processID, AppStartTime.wHour, AppStartTime.wMinute, AppStartTime.wSecond, AppStartTime.wMilliseconds);//, AppStatus
-                    filestream << strtmp << "\t" << processID << "\t" << AppStartTime.wHour << ":" << AppStartTime.wMinute << ":" << AppStartTime.wSecond << ":" << AppStartTime.wMilliseconds << "\t" << " START " << "\n";
+                if (_tcscmp(szProcessName, _T("<unknown>"))) {
+                    if (GetExitCodeProcess(hProcess, &exitCode) == 0) {
+                        // Print the process name and identifier.
+                        _tprintf(TEXT("%s  %u  %02d:%02d:%02d:%03d  STOP\n"), szProcessName, processID, AppStartTime.wHour, AppStartTime.wMinute, AppStartTime.wSecond, AppStartTime.wMilliseconds);//, AppStatus
+                        filestream << strtmp << "\t" << processID << "\t" << AppStartTime.wHour << ":" << AppStartTime.wMinute << ":" << AppStartTime.wSecond << ":" << AppStartTime.wMilliseconds << "\t" << " STOP " << "\n";
+                    }
+                    else {
+                        // Print the process name and identifier.
+                        _tprintf(TEXT("%s  %u  %02d:%02d:%02d:%03d  START\n"), szProcessName, processID, AppStartTime.wHour, AppStartTime.wMinute, AppStartTime.wSecond, AppStartTime.wMilliseconds);//, AppStatus
+                        filestream << strtmp << "\t" << processID << "\t" << AppStartTime.wHour << ":" << AppStartTime.wMinute << ":" << AppStartTime.wSecond << ":" << AppStartTime.wMilliseconds << "\t" << " START " << "\n";
+                    }
                 }
             }
         }
@@ -93,7 +95,7 @@ int main(void)
     // Print the name and process identifier for each process.
 
     
-    filestream.open("result.txt");
+    filestream.open("result_without_unknown.txt");
     filestream << "Process Name" << "\t\t\t" << "PID" << "\t" << "Time" << "\t\t" << "Status" << "\n";
     while(true){
         for (i = 0; i < cProcesses; i++)
